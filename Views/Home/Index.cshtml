@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@section first{
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="carousel slide" id="bgimg">
+            <ol class="carousel-indicators">
+                <li data-target="#bgimg" data-slide-to="0" class="active"></li>
+                <li data-target="#bgimg" data-slide-to="1"></li>
+                <li data-target="#bgimg" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="~/Images/bg-map.jpg" />
+                    <div class="container">
+                        <div class="carousel-caption">
+
+                            <div>
+                                <h1 style="font-family:Bauhaus 93">Connect with Your Friends</h1>
+                                @if (Session["login"] == null)
+                                {
+                                    <h2 style="font-family:Rockwell">
+                                        <a href="/Student/SignUp">New Here ? Click to Register :)</a>
+                                    </h2>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+}
