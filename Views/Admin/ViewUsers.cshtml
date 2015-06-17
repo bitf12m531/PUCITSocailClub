@@ -58,7 +58,7 @@
                 {
                     <a class="list-group-item active" href="/Admin/ViewUsers">View Users</a>
                     {
-                        foreach (AdminMessage adm in de.AdminMessages.Where ( x => x.newmsg.Equals ( "yes" ) ))
+                        foreach (AdminMessage adm in de.AdminMessages.Where ( x => x.newmsg.Equals ( "yes" ) ).ToList())
                         {
                             msgs++;
                         }
@@ -74,7 +74,7 @@
                 }
                 @{
                     int newmsg = 0;
-                    foreach (Message adm in de.Messages.Where ( x => x.sentto == u.Id && x.newmsg.Equals ( "yes" ) ))
+                    foreach (Message adm in de.Messages.Where ( x => x.sentto == u.Id && x.newmsg.Equals ( "yes" ) ).ToList())
                     {
                         newmsg++;
                     }
@@ -109,7 +109,7 @@
                         else
                         {
 
-                            foreach (Student s in ViewBag.Students)
+                            foreach (Student s in de.Students.ToList())
                             {
                                 
                                     if (!s.type.Equals ( "admin" ))

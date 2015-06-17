@@ -70,7 +70,7 @@
                 {
                     <a class="list-group-item" href="/Admin/ViewUsers">View Users</a>
                     {
-                        foreach (AdminMessage adm in de.AdminMessages.Where ( x => x.newmsg.Equals ( "yes" ) ))
+                        foreach (AdminMessage adm in de.AdminMessages.Where ( x => x.newmsg.Equals ( "yes" ) ).ToList())
                         {
                             msgs++;
                         }
@@ -86,7 +86,7 @@
                 }
                 @{
                     int newmsg = 0;
-                    foreach (Message adm in de.Messages.Where ( x => x.sentto == u.Id && x.newmsg.Equals ( "yes" ) ))
+                    foreach (Message adm in de.Messages.Where ( x => x.sentto == u.Id && x.newmsg.Equals ( "yes" ) ).ToList())
                     {
                         newmsg++;
                     }
@@ -126,7 +126,7 @@
                             {
                                 Student grc = new Student ();
                                 
-                                foreach (Group g in ViewBag.Groups)
+                                foreach (Group g in de.Groups.ToList())
                                 {
                                     try
                                     {
@@ -155,7 +155,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @foreach(Group_Members gm in g.Group_Members)
+                                        @foreach(Group_Members gm in g.Group_Members.ToList())
                                         {
                                             Student Gstd = new Student();
                                             try
@@ -197,7 +197,7 @@
                             }
                             else
                             {
-                                foreach (Group g in ViewBag.Groups)
+                                foreach (Group g in de.Groups.ToList())
                                 {
                                     Student std = (Student)Session["userlog"];
                                     Student grc = new Student ();
@@ -230,7 +230,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            @foreach(Group_Members gm in g.Group_Members)
+                                            @foreach(Group_Members gm in g.Group_Members.ToList())
                                             {
                                                 Student Gstd = new Student ();
                                                 try

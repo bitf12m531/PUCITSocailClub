@@ -61,7 +61,7 @@
                 {
                     <a class="list-group-item" href="/Admin/ViewUsers">View Users</a>
                     {
-                        foreach (AdminMessage adm in de.AdminMessages.Where ( x => x.newmsg.Equals ( "yes" ) ))
+                        foreach (AdminMessage adm in de.AdminMessages.Where ( x => x.newmsg.Equals ( "yes" ) ).ToList())
                         {
                             msgs++;
                         }
@@ -77,7 +77,7 @@
                 }
                 @{
                     int newmsg = 0;
-                    foreach (Message adm in de.Messages.Where ( x => x.sentto == u.Id && x.newmsg.Equals ( "yes" ) ))
+                    foreach (Message adm in de.Messages.Where ( x => x.sentto == u.Id && x.newmsg.Equals ( "yes" ) ).ToList())
                     {
                         newmsg++;
                     }
@@ -122,9 +122,10 @@
                         <tbody>
                             @{
                                 Boolean status = false;
-                                foreach (Message adm in de.Messages.Where ( x => x.sentfrom == u.Id ).OrderByDescending ( y => y.time ))
+                                Student std = new Student();
+                                foreach (Message adm in de.Messages.Where ( x => x.sentfrom == u.Id ).OrderByDescending ( y => y.time ).ToList())
                                 {
-                                    Student std = de.Students.First ( y => y.Id == adm.sentto );
+                                    std = de.Students.First ( y => y.Id == adm.sentto );
                                     <tr>
                                         <td>@std.username</td>
                                         <td>@std.rollnumber</td>
