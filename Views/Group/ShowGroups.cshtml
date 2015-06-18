@@ -190,7 +190,7 @@
                                 {
                                     Student std = (Student) Session["userlog"];
 
-                                    foreach (Group_Members gM in g.Group_Members)
+                                    foreach (Group_Members gM in g.Group_Members.ToList())
                                     {
                                         Student grc = new Student ();
                                         try
